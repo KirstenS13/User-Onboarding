@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 //create Form function to render the form
 function Form(){
     //State, functions, hooks in here (outside the return)
+
     //need state for the input
     const [formState, setFormState] = useState({
         name: '',
@@ -21,6 +22,14 @@ function Form(){
         password: '',
         terms: false
     });
+
+    //function for onChange
+    const inputChange = e => {
+        //determine if it needs checked for checkbox or value for other
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        //set the state when the form is changed
+        setFormState({ ...formState, [e.target.name]: value })
+    }
 
     //JSX inside the return
     return (
@@ -33,6 +42,7 @@ function Form(){
                     id='name' 
                     placeholder='Enter your full name...'
                     value={formState.name}
+                    onChange={inputChange}
                 />
             </label>
             <label htmlFor='email'>
@@ -43,6 +53,7 @@ function Form(){
                     id='email'
                     placeholder='Enter your email...'
                     value={formState.email}
+                    onChange={inputChange}
                 />
             </label>
             <label htmlFor='password'>
@@ -53,6 +64,7 @@ function Form(){
                     id='password'
                     placeholder='Create a password...'
                     value={formState.password}
+                    onChange={inputChange}
                 />
             </label>
             <label htmlFor='terms'>
@@ -62,6 +74,7 @@ function Form(){
                     name='terms'
                     id='terms'
                     checked={formState.terms}
+                    onChange={inputChange}
                 />
             </label>
             <button>Submit</button>
