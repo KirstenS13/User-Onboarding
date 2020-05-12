@@ -1,5 +1,5 @@
-//import React
-import React from 'react';
+//import React and useState
+import React, { useState } from 'react';
 
 /* the Form needs:
     Name
@@ -9,9 +9,18 @@ import React from 'react';
     Submit Button
 */
 
+//schema goes out here
+
 //create Form function to render the form
 function Form(){
     //State, functions, hooks in here (outside the return)
+    //need state for the input
+    const [formState, setFormState] = useState({
+        name: '',
+        email: '',
+        password: '',
+        terms: false
+    });
 
     //JSX inside the return
     return (
@@ -23,6 +32,7 @@ function Form(){
                     name='name' 
                     id='name' 
                     placeholder='Enter your full name...'
+                    value={formState.name}
                 />
             </label>
             <label htmlFor='email'>
@@ -32,6 +42,7 @@ function Form(){
                     name='email'
                     id='email'
                     placeholder='Enter your email...'
+                    value={formState.email}
                 />
             </label>
             <label htmlFor='password'>
@@ -41,6 +52,7 @@ function Form(){
                     name='password'
                     id='password'
                     placeholder='Create a password...'
+                    value={formState.password}
                 />
             </label>
             <label htmlFor='terms'>
@@ -49,6 +61,7 @@ function Form(){
                     type='checkbox'
                     name='terms'
                     id='terms'
+                    checked={formState.terms}
                 />
             </label>
             <button>Submit</button>
