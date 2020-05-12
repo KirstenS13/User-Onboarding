@@ -25,6 +25,33 @@ function Form(){
                     placeholder='Enter your full name...'
                 />
             </label>
+            <label htmlFor='email'>
+                Email:
+                <input
+                    type='email'
+                    name='email'
+                    id='email'
+                    placeholder='Enter your email...'
+                />
+            </label>
+            <label htmlFor='password'>
+                Password:
+                <input
+                    type='password'
+                    name='password'
+                    id='password'
+                    placeholder='Create a password...'
+                />
+            </label>
+            <label htmlFor='terms'>
+                Terms & Conditions
+                <input
+                    type='checkbox'
+                    name='terms'
+                    id='terms'
+                />
+            </label>
+            <button>Submit</button>
         </form>
     );
 }
