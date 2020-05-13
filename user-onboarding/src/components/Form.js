@@ -43,6 +43,18 @@ function Form(){
     });
 
     //function for validation
+    const validateForm = e => {
+        let value = e.target.name === 'checkbox' ? e.target.checked : e.target.value;
+        yup
+            .reach(formSchema, e.target.name)
+            .validate(value)
+            .then(valid => {
+                setErrorState({ ...errorState, [e.target.name]: '' });
+            })
+            .catch(err => {
+                setErrorState({ ...errorState, [e.target.name]: err.errors[0] });
+            })
+    };
 
     //function for onChange
     const inputChange = e => {
@@ -51,13 +63,13 @@ function Form(){
         //set the state when the form is changed
         setFormState({ ...formState, [e.target.name]: value });
         console.log(formState);
-    }
+    };
 
     //function for submitting
     const submitForm = e => {
         e.preventDefault();
         console.log('Submitted!')
-    }
+    };
 
     //JSX inside the return
     return (
