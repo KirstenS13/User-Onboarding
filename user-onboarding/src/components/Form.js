@@ -58,11 +58,15 @@ function Form(){
 
     //function for onChange
     const inputChange = e => {
+        //let us keep using the event
+        e.persist();
+        //validate the input
+        validateForm(e);
         //determine if it needs checked for checkbox or value for other
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         //set the state when the form is changed
         setFormState({ ...formState, [e.target.name]: value });
-        console.log(formState);
+        //console.log('checked:', e.target.checked, 'value:', e.target.value, 'terms:', formState.terms);
     };
 
     //function for submitting
@@ -84,6 +88,7 @@ function Form(){
                     value={formState.name}
                     onChange={inputChange}
                 />
+                {errorState.name.length > 0 ? (<p>{errorState.name}</p>) : null}
             </label>
             <label htmlFor='email'>
                 Email:
@@ -95,6 +100,7 @@ function Form(){
                     value={formState.email}
                     onChange={inputChange}
                 />
+                {errorState.email.length > 0 ? (<p>{errorState.email}</p>) : null}
             </label>
             <label htmlFor='password'>
                 Password:
@@ -106,6 +112,7 @@ function Form(){
                     value={formState.password}
                     onChange={inputChange}
                 />
+                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
             </label>
             <label htmlFor='terms'>
                 Terms & Conditions
@@ -116,6 +123,7 @@ function Form(){
                     checked={formState.terms}
                     onChange={inputChange}
                 />
+                {errorState.terms.length > 0 ? (<p>{errorState.terms}</p>) : null}
             </label>
             <button>Submit</button>
         </form>
