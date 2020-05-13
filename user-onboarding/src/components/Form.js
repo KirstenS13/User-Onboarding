@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 //import yup
 import * as yup from 'yup';
+//import axios
+import axios from 'axios';
 
 /* the Form needs:
     Name
@@ -44,14 +46,17 @@ function Form(){
 
     //function for validation
     const validateForm = e => {
+        //check if it is a checkbox
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         yup
-            .reach(formSchema, e.target.name)
-            .validate(value)
+            .reach(formSchema, e.target.name) //reach into this part of the schema
+            .validate(value) //check this part of the object
             .then(valid => {
+                //empty errorState if valid
                 setErrorState({ ...errorState, [e.target.name]: '' });
             })
             .catch(err => {
+                //add to errorState if invalid
                 setErrorState({ ...errorState, [e.target.name]: err.errors[0] });
             })
     };
@@ -70,8 +75,17 @@ function Form(){
 
     //function for submitting
     const submitForm = e => {
-        e.preventDefault();
+        e.preventDefault(); //don't reload the page
         console.log('Submitted!')
+        //send data to the server
+        axios
+            .post('https://reqres.in/api/users', formState)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
     //JSX inside the return
