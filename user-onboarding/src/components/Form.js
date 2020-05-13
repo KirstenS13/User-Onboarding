@@ -1,5 +1,7 @@
 //import React and useState
 import React, { useState } from 'react';
+//import yup
+import * as yup from 'yup';
 
 /* the Form needs:
     Name
@@ -10,6 +12,15 @@ import React, { useState } from 'react';
 */
 
 //schema goes out here
+let formSchema = yup.object().shape({
+    name: yup.string().required('Please provide your full name'),
+    email: yup
+        .string()
+        .email('Must be a valid email address')
+        .required('Please enter your email address'),
+    password: yup.string().required('Please create a password'),
+    terms: yup.boolean().oneOf([true], 'Please accept Terms & Conditions')
+});
 
 //create Form function to render the form
 function Form(){
