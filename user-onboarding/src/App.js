@@ -10,10 +10,11 @@ function App() {
   const [users, setUsers] = useState([]);
 
   function addUsers(userData) {
+    console.log('Users Before', users)
     const newUser = userData;
     setUsers([...users, newUser]);
     console.log('User Data', userData);
-    console.log('Users', users)
+    console.log('Users after', users)
   };
 
   return (
@@ -23,6 +24,7 @@ function App() {
       <h2>Existing Users</h2>
       <pre>
         {JSON.stringify(users)}
+        {console.log('users in jsx', users)}
       </pre>
     </div>
   );
