@@ -82,7 +82,7 @@ function Form(props){
             .post('https://reqres.in/api/users', formState)
             .then(response => {
                 console.log(response);
-                props.addUser(response.data);
+                props.addUsers(response.data);
             })
             .catch(error => {
                 console.log(error)
