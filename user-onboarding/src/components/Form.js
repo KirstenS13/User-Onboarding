@@ -25,7 +25,7 @@ let formSchema = yup.object().shape({
 });
 
 //create Form function to render the form
-function Form(){
+function Form(props){
     //State, functions, hooks in here (outside the return)
 
     //need state for the input
@@ -43,9 +43,6 @@ function Form(){
         password: '',
         terms: ''
     });
-
-    //need state for returned data from server
-    const [users, setUsers] = useState([]);
 
     //function for validation
     const validateForm = e => {
@@ -85,8 +82,7 @@ function Form(){
             .post('https://reqres.in/api/users', formState)
             .then(response => {
                 console.log(response);
-                setUsers(users.push(response.data));
-                console.log(users)
+                props.addUser(response.data);
             })
             .catch(error => {
                 console.log(error)
