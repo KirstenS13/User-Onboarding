@@ -34,6 +34,16 @@ function Form(){
         terms: false
     });
 
+    //need state for the errors
+    const [errorState, setErrorState] = useState({
+        name: '',
+        email: '',
+        password: '',
+        terms: ''
+    });
+
+    //function for validation
+
     //function for onChange
     const inputChange = e => {
         //determine if it needs checked for checkbox or value for other
