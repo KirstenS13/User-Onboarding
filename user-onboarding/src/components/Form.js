@@ -28,12 +28,19 @@ function Form(){
         //determine if it needs checked for checkbox or value for other
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         //set the state when the form is changed
-        setFormState({ ...formState, [e.target.name]: value })
+        setFormState({ ...formState, [e.target.name]: value });
+        console.log(formState);
+    }
+
+    //function for submitting
+    const submitForm = e => {
+        e.preventDefault();
+        console.log('Submitted!')
     }
 
     //JSX inside the return
     return (
-        <form>
+        <form onSubmit={submitForm}>
             <label htmlFor='name'>
                 Name:
                 <input 
