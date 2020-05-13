@@ -44,7 +44,7 @@ function Form(){
 
     //function for validation
     const validateForm = e => {
-        let value = e.target.name === 'checkbox' ? e.target.checked : e.target.value;
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         yup
             .reach(formSchema, e.target.name)
             .validate(value)
@@ -66,7 +66,6 @@ function Form(){
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         //set the state when the form is changed
         setFormState({ ...formState, [e.target.name]: value });
-        //console.log('checked:', e.target.checked, 'value:', e.target.value, 'terms:', formState.terms);
     };
 
     //function for submitting
