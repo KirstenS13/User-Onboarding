@@ -44,6 +44,9 @@ function Form(){
         terms: ''
     });
 
+    //need state for returned data from server
+    const [users, setUsers] = useState([]);
+
     //function for validation
     const validateForm = e => {
         //check if it is a checkbox
@@ -81,7 +84,9 @@ function Form(){
         axios
             .post('https://reqres.in/api/users', formState)
             .then(response => {
-                console.log(response)
+                console.log(response);
+                setUsers(users.push(response.data));
+                console.log(users)
             })
             .catch(error => {
                 console.log(error)
