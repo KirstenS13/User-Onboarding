@@ -85,7 +85,7 @@ function Form(props){
             .post('https://reqres.in/api/users', formState)
             .then(response => {
                 console.log(response);
-                setUsers(response);
+                setUsers([...users, response]);
             })
             .catch(error => {
                 console.log(error)
