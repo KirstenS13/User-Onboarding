@@ -44,6 +44,9 @@ function Form(props){
         terms: ''
     });
 
+    //need state for returned data from server
+    const [users, setUsers] = useState([]);
+
     //function for validation
     const validateForm = e => {
         //check if it is a checkbox
@@ -82,8 +85,7 @@ function Form(props){
             .post('https://reqres.in/api/users', formState)
             .then(response => {
                 console.log(response);
-                props.addUsers(response.data);
-            
+                setUsers(response);
             })
             .catch(error => {
                 console.log(error)
@@ -141,6 +143,7 @@ function Form(props){
                 {errorState.terms.length > 0 ? (<p>{errorState.terms}</p>) : null}
             </label>
             <button>Submit</button>
+            <pre>{JSON.stringify(users, null, 2)}</pre>
         </form>
     );
 }
