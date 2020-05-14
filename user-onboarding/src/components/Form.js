@@ -104,6 +104,8 @@ function Form(props){
                     placeholder='Enter your full name...'
                     value={formState.name}
                     onChange={inputChange}
+                    //attribute for cypress testing
+                    data-cy='name'
                 />
                 {errorState.name.length > 0 ? (<p>{errorState.name}</p>) : null}
             </label>
@@ -116,6 +118,8 @@ function Form(props){
                     placeholder='Enter your email...'
                     value={formState.email}
                     onChange={inputChange}
+                    //attribute for cypress testing
+                    data-cy='email'
                 />
                 {errorState.email.length > 0 ? (<p>{errorState.email}</p>) : null}
             </label>
@@ -128,6 +132,8 @@ function Form(props){
                     placeholder='Create a password...'
                     value={formState.password}
                     onChange={inputChange}
+                    //attribute for cypress testing
+                    data-cy='password'
                 />
                 {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
             </label>
