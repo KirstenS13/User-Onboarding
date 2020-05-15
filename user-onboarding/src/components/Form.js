@@ -90,6 +90,13 @@ function Form(props){
             .catch(error => {
                 console.log(error)
             })
+        //clear the form
+        setFormState({
+            name: '',
+            email: '',
+            password: '',
+            terms: false
+        });
     };
 
     //JSX inside the return
@@ -150,8 +157,14 @@ function Form(props){
                 />
                 {errorState.terms.length > 0 ? (<p>{errorState.terms}</p>) : null}
             </label>
-            <button>Submit</button>
-            <pre>{JSON.stringify(users, null, 2)}</pre>
+            <button
+                //attribute for cypress testing
+                data-cy='submit'
+            >Submit</button>
+            <pre
+                //attribute for cypress testing
+                data-cy='response'
+            >{JSON.stringify(users, null, 2)}</pre>
         </form>
     );
 }
