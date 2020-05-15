@@ -43,10 +43,29 @@ describe('Testing the form inputs and submit button', () => {
 })
 
 describe('Testing the form validation', () => {
-    //Test that will leave the email blank and test for error message
+    //visits the page before every test
+    beforeEach(() => {
+        cy.visit('http://localhost:3000');
+    })
+
+    //Test that will start typing then delete the name and test for an error message
+    it('Tests for form validation on the name input', () => {
+        cy
+            .get('[data-cy="name"]')
+            .type("J")
+            .clear()
+            .get('[data-cy="email"]')
+            .type('John Smith')
+            .get('[data-cy="password"]')
+            .type('abc123')
+            .get('[data-cy="terms"]')
+            .check()
+        cy.contains('Please provide your full name')
+    })
+
+    //Test that will start typing then delete the email and test for an error message
     it('Tests for form validation on the email input', () => {
         cy
-            .visit('http://localhost:3000')
             .get('[data-cy="name"]')
             .type('John Smith')
             .get('[data-cy="email"]')
@@ -57,5 +76,20 @@ describe('Testing the form validation', () => {
             .get('[data-cy="terms"]')
             .check()
         cy.contains('Please enter your email address')
+    })
+
+    //Test that will start typing then delete the password and test for an error message
+    it('Tests for form validation on the password input', () => {
+        cy
+            .get('[data-cy="name"]')
+            .type('John Smith')
+            .get('[data-cy="email"]')
+            .type('jsmith@gmail.com')
+            .get('[data-cy="password"]')
+            .type('a')
+            .clear()
+            .get('[data-cy="terms"]')
+            .check()
+        cy.contains('Please create a password')
     })
 })
