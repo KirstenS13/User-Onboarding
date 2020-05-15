@@ -46,14 +46,16 @@ describe('Testing the form validation', () => {
     //Test that will leave the email blank and test for error message
     it('Tests for form validation on the email input', () => {
         cy
+            .visit('http://localhost:3000')
             .get('[data-cy="name"]')
             .type('John Smith')
+            .get('[data-cy="email"]')
+            .type('j')
+            .clear()
             .get('[data-cy="password"]')
             .type('abc123')
-            .get('[data-cy="email"]')
-            .type('jsmith@gmail.com')
-            .get('[data-cy="submit"]')
-            .click()
-        cy.contains('Please accept Terms & Conditions')
+            .get('[data-cy="terms"]')
+            .check()
+        cy.contains('Please enter your email address')
     })
 })

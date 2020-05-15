@@ -29,10 +29,11 @@ function Form(props){
     //State, functions, hooks in here (outside the return)
 
     //need state for the input
+    //the error messages were not appearing, fixed it by setting the default values to null instead of an empty string
     const [formState, setFormState] = useState({
-        name: '',
-        email: '',
-        password: '',
+        name: null,
+        email: null,
+        password: null,
         terms: false
     });
 
