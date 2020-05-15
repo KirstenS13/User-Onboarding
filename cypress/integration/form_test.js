@@ -33,6 +33,7 @@ describe('Testing the form inputs and submit button', () => {
     })
 
     //Test for the Submit button
+    //Later, try redoing this with .submit()
     it('Tests the Submit button', () => {
         cy
             .get('[data-cy="submit"]')
@@ -91,5 +92,14 @@ describe('Testing the form validation', () => {
             .get('[data-cy="terms"]')
             .check()
         cy.contains('Please create a password')
+    })
+
+    //Test that will check for form validation on the Terms & Conditions checkbox
+    it('Tests for form validation on the terms checkbox', () => {
+        cy
+            .get('[data-cy="terms"]')
+            .check()
+            .uncheck()
+        cy.contains('Please accept Terms & Conditions')
     })
 })
