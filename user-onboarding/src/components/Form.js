@@ -145,6 +145,8 @@ function Form(props){
                     id='terms'
                     checked={formState.terms}
                     onChange={inputChange}
+                    //attribute for cypress testing
+                    data-cy='terms'
                 />
                 {errorState.terms.length > 0 ? (<p>{errorState.terms}</p>) : null}
             </label>

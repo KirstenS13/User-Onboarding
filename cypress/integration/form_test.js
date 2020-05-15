@@ -20,4 +20,11 @@ describe('Testing the form inputs', () => {
             .type('abc123')
             .should('have.value', 'abc123');
     })
+
+    it('Tests the Terms & Conditions checkbox', () => {
+        cy
+            .get('[data-cy="terms"]')
+            .check()
+            .should('be.checked')
+    })
 })
