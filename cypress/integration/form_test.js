@@ -1,4 +1,4 @@
-describe('Testing the form inputs, buttons, and validation', () => {
+describe('Testing the form inputs and submit button', () => {
     //Test for the Name input
     it('Tests the Name input', () => {
         cy
@@ -39,5 +39,21 @@ describe('Testing the form inputs, buttons, and validation', () => {
             .click()
             .get('[data-cy="response"]')
             .should('not.equal', []) 
+    })
+})
+
+describe('Testing the form validation', () => {
+    //Test that will leave the email blank and test for error message
+    it('Tests for form validation on the email input', () => {
+        cy
+            .get('[data-cy="name"]')
+            .type('John Smith')
+            .get('[data-cy="password"]')
+            .type('abc123')
+            .get('[data-cy="email"]')
+            .type('jsmith@gmail.com')
+            .get('[data-cy="submit"]')
+            .click()
+        cy.contains('Please accept Terms & Conditions')
     })
 })
